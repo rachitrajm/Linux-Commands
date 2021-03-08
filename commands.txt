@@ -1,0 +1,516 @@
+1. Find the processes running on a linux machine:
+rachit@rrm:~$ ps -al
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+4 S  1000    1610    1604  0  80   0 - 132740 ep_pol tty2    00:00:02 Xorg
+0 S  1000    1657    1604  0  80   0 - 49905 poll_s tty2     00:00:00 gnome-sess
+0 R  1000    2335    2323  0  80   0 -  5013 -      pts/0    00:00:00 ps
+rachit@rrm:~$ sudo ps -al
+[sudo] password for rachit: 
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+4 S  1000    1610    1604  0  80   0 - 132740 ep_pol tty2    00:00:02 Xorg
+0 S  1000    1657    1604  0  80   0 - 49905 poll_s tty2     00:00:00 gnome-sess
+4 S     0    2336    2323  0  80   0 -  5180 poll_s pts/0    00:00:00 sudo
+4 R     0    2337    2336  0  80   0 -  5013 -      pts/0    00:00:00 ps
+rachit@rrm:~$ sudo ps -aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.3  0.1 168960 12904 ?        Ss   16:34   0:06 /sbin/init sp
+root           2  0.0  0.0      0     0 ?        S    16:34   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   16:34   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   16:34   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I    16:34   0:00 [kworker/0:0-
+root           6  0.0  0.0      0     0 ?        I<   16:34   0:00 [kworker/0:0H
+root           9  0.0  0.0      0     0 ?        I<   16:34   0:00 [mm_percpu_wq
+root          10  0.0  0.0      0     0 ?        S    16:34   0:00 [ksoftirqd/0]
+root          11  0.0  0.0      0     0 ?        I    16:34   0:01 [rcu_sched]
+root          12  0.0  0.0      0     0 ?        S    16:34   0:00 [migration/0]
+root          13  0.0  0.0      0     0 ?        S    16:34   0:00 [idle_inject/
+root          14  0.0  0.0      0     0 ?        S    16:34   0:00 [cpuhp/0]
+root          15  0.0  0.0      0     0 ?        S    16:34   0:00 [kdevtmpfs]
+root          16  0.0  0.0      0     0 ?        I<   16:34   0:00 [netns]
+root          17  0.0  0.0      0     0 ?        S    16:34   0:00 [rcu_tasks_kt
+root          18  0.0  0.0      0     0 ?        S    16:34   0:00 [rcu_tasks_ru
+root          19  0.0  0.0      0     0 ?        S    16:34   0:00 [rcu_tasks_tr
+root          20  0.0  0.0      0     0 ?        S    16:34   0:00 [kauditd]
+root          21  0.0  0.0      0     0 ?        S    16:34   0:00 [khungtaskd]
+root          22  0.0  0.0      0     0 ?        S    16:34   0:00 [oom_reaper]
+root          23  0.0  0.0      0     0 ?        I<   16:34   0:00 [writeback]
+root          24  0.0  0.0      0     0 ?        S    16:34   0:00 [kcompactd0]
+root          25  0.0  0.0      0     0 ?        SN   16:34   0:00 [ksmd]
+root          26  0.0  0.0      0     0 ?        SN   16:34   0:00 [khugepaged]
+root          72  0.0  0.0      0     0 ?        I<   16:34   0:00 [kintegrityd]
+root          73  0.0  0.0      0     0 ?        I<   16:34   0:00 [kblockd]
+root          74  0.0  0.0      0     0 ?        I<   16:34   0:00 [blkcg_punt_b
+root          75  0.0  0.0      0     0 ?        I<   16:34   0:00 [tpm_dev_wq]
+root          76  0.0  0.0      0     0 ?        I<   16:34   0:00 [ata_sff]
+root          77  0.0  0.0      0     0 ?        I<   16:34   0:00 [md]
+root          78  0.0  0.0      0     0 ?        I<   16:34   0:00 [edac-poller]
+root          79  0.0  0.0      0     0 ?        I<   16:34   0:00 [devfreq_wq]
+root          80  0.0  0.0      0     0 ?        S    16:34   0:00 [watchdogd]
+root          82  0.0  0.0      0     0 ?        I    16:34   0:00 [kworker/u2:1
+root          83  0.0  0.0      0     0 ?        I<   16:34   0:00 [pm_wq]
+root          85  0.0  0.0      0     0 ?        S    16:34   0:00 [kswapd0]
+root          86  0.0  0.0      0     0 ?        S    16:34   0:00 [ecryptfs-kth
+root          88  0.0  0.0      0     0 ?        I<   16:34   0:00 [kthrotld]
+root          89  0.0  0.0      0     0 ?        I<   16:34   0:00 [acpi_thermal
+root          90  0.0  0.0      0     0 ?        S    16:34   0:00 [scsi_eh_0]
+root          91  0.0  0.0      0     0 ?        I<   16:34   0:00 [scsi_tmf_0]
+root          92  0.0  0.0      0     0 ?        S    16:34   0:00 [scsi_eh_1]
+root          93  0.0  0.0      0     0 ?        I<   16:34   0:00 [scsi_tmf_1]
+root          95  0.0  0.0      0     0 ?        I<   16:34   0:00 [vfio-irqfd-c
+root          97  0.0  0.0      0     0 ?        I<   16:34   0:00 [ipv6_addrcon
+root         106  0.0  0.0      0     0 ?        I<   16:34   0:00 [kstrp]
+root         109  0.0  0.0      0     0 ?        I<   16:34   0:00 [zswap-shrink
+root         110  0.0  0.0      0     0 ?        I<   16:34   0:00 [kworker/u3:0
+root         115  0.0  0.0      0     0 ?        I<   16:34   0:00 [charger_mana
+root         159  0.0  0.0      0     0 ?        S    16:34   0:00 [scsi_eh_2]
+root         160  0.0  0.0      0     0 ?        I<   16:34   0:00 [scsi_tmf_2]
+root         161  0.0  0.0      0     0 ?        S    16:34   0:00 [scsi_eh_3]
+root         162  0.0  0.0      0     0 ?        I<   16:34   0:00 [scsi_tmf_3]
+root         163  0.0  0.0      0     0 ?        S    16:34   0:00 [scsi_eh_4]
+root         164  0.0  0.0      0     0 ?        I<   16:34   0:00 [scsi_tmf_4]
+root         168  0.0  0.0      0     0 ?        I<   16:34   0:00 [kworker/0:1H
+root         195  0.0  0.0      0     0 ?        S    16:34   0:00 [jbd2/sda5-8]
+root         196  0.0  0.0      0     0 ?        I<   16:34   0:00 [ext4-rsv-con
+root         239  0.0  0.1  53776 18620 ?        S<s  16:34   0:00 /lib/systemd/
+root         266  0.0  0.0      0     0 ?        S<   16:34   0:00 [loop0]
+root         267  0.0  0.0      0     0 ?        S<   16:34   0:00 [loop1]
+root         268  0.0  0.0      0     0 ?        S<   16:34   0:00 [loop2]
+root         270  0.0  0.0      0     0 ?        S<   16:34   0:00 [loop3]
+root         272  0.0  0.0  23972  7584 ?        Ss   16:34   0:00 /lib/systemd/
+root         273  0.0  0.0      0     0 ?        S<   16:34   0:00 [loop4]
+root         274  0.0  0.0      0     0 ?        S    16:34   0:00 [irq/18-vmwgf
+root         275  0.0  0.0      0     0 ?        I<   16:34   0:00 [ttm_swap]
+root         305  0.0  0.0      0     0 ?        I<   16:34   0:00 [iprt-VBoxWQu
+root         329  0.0  0.0      0     0 ?        I<   16:34   0:00 [cryptd]
+systemd+     554  0.0  0.1  24100 12236 ?        Ss   16:34   0:00 /lib/systemd/
+systemd+     555  0.0  0.0  90456  6320 ?        Ssl  16:34   0:00 /lib/systemd/
+root         590  0.0  0.0 250524  9324 ?        Ssl  16:34   0:00 /usr/lib/acco
+root         591  0.0  0.0   2548   768 ?        Ss   16:34   0:00 /usr/sbin/acp
+avahi        594  0.0  0.0   8532  3584 ?        Ss   16:34   0:00 avahi-daemon:
+root         595  0.0  0.0  18052  2772 ?        Ss   16:34   0:00 /usr/sbin/cro
+root         596  0.0  0.0  37208  8956 ?        Ss   16:34   0:00 /usr/sbin/cup
+message+     597  0.1  0.0   9856  6404 ?        Ss   16:34   0:02 /usr/bin/dbus
+root         598  0.0  0.2 420912 21996 ?        Ssl  16:34   0:00 /usr/sbin/Net
+root         606  0.0  0.1  47956 20236 ?        Ss   16:34   0:00 /usr/bin/pyth
+root         609  0.1  0.1 253596 12540 ?        Ssl  16:34   0:02 /usr/lib/poli
+syslog       611  0.0  0.0 224356  4748 ?        Ssl  16:34   0:00 /usr/sbin/rsy
+root         614  0.0  0.0 244340  6536 ?        Ssl  16:34   0:00 /usr/libexec/
+root         615  0.0  0.0  17012  8488 ?        Ss   16:34   0:00 /lib/systemd/
+root         621  0.0  0.1 395628 14800 ?        Ssl  16:34   0:00 /usr/lib/udis
+root         625  0.0  0.0  13688  4932 ?        Ss   16:34   0:00 /sbin/wpa_sup
+avahi        651  0.0  0.0   8352   328 ?        S    16:34   0:00 avahi-daemon:
+root         694  0.0  0.1 180572 12744 ?        Ssl  16:34   0:00 /usr/sbin/cup
+lp           697  0.0  0.0  15340  6608 ?        S    16:35   0:00 /usr/lib/cups
+root         704  0.0  0.0 313744 10840 ?        Ssl  16:35   0:00 /usr/sbin/Mod
+root         712  0.0  0.2 126484 22844 ?        Ssl  16:35   0:00 /usr/bin/pyth
+whoopsie     760  0.0  0.1 327332 16096 ?        Ssl  16:35   0:00 /usr/bin/whoo
+kernoops     767  0.0  0.0  11264   448 ?        Ss   16:35   0:00 /usr/sbin/ker
+kernoops     769  0.0  0.0  11264   448 ?        Ss   16:35   0:00 /usr/sbin/ker
+root         939  0.0  0.0      0     0 ?        S<   16:35   0:00 [loop5]
+root        1019  0.0  0.0 248248  8552 ?        Ssl  16:35   0:00 /usr/sbin/gdm
+root        1024  0.0  0.0 304056  2960 ?        Sl   16:35   0:00 /usr/sbin/VBo
+rtkit       1056  0.0  0.0 152940  3052 ?        SNsl 16:35   0:00 /usr/libexec/
+root        1160  0.0  0.0 260804  9816 ?        Ssl  16:35   0:00 /usr/lib/upow
+root        1184  0.1  0.2 628060 28892 ?        Ssl  16:35   0:02 /usr/lib/snap
+colord      1506  0.0  0.1 257540 16576 ?        Ssl  16:36   0:00 /usr/libexec/
+root        1547  0.0  0.0 323300 10136 ?        Sl   16:36   0:00 gdm-session-w
+rachit      1556  0.0  0.0  19256 10604 ?        Ss   16:36   0:00 /lib/systemd/
+rachit      1557  0.0  0.0 104840  4620 ?        S    16:36   0:00 (sd-pam)
+rachit      1562  0.0  0.1 1154736 18516 ?       S<sl 16:36   0:00 /usr/bin/puls
+rachit      1564  0.0  0.2 519888 23844 ?        SNsl 16:36   0:00 /usr/libexec/
+rachit      1567  0.0  0.0   8236  5376 ?        Ss   16:36   0:00 /usr/bin/dbus
+rachit      1572  0.0  0.0 248808  7832 ?        Sl   16:36   0:00 /usr/bin/gnom
+rachit      1574  0.0  0.0 248320  7860 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1580  0.0  0.0 382060  8476 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1598  0.0  0.1 326068 11844 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1604  0.0  0.0 172652  6664 tty2     Ssl+ 16:36   0:00 /usr/lib/gdm3
+rachit      1610  0.1  0.5 530960 59376 tty2     Sl+  16:36   0:03 /usr/lib/xorg
+rachit      1612  0.0  0.0 244508  6184 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1616  0.0  0.3 554888 36672 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1623  0.0  0.1 401032 11652 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1625  0.0  0.0 244332  6380 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1633  0.0  0.0 325360  7596 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1642  0.0  0.0 246608  6800 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1657  0.0  0.1 199620 15600 tty2     Sl+  16:36   0:00 /usr/libexec/
+rachit      1739  0.0  0.0  31244   360 ?        S    16:36   0:00 /usr/bin/VBox
+rachit      1740  0.0  0.0 163512  4376 ?        Sl   16:36   0:00 /usr/bin/VBox
+rachit      1749  0.0  0.0  31244   360 ?        S    16:36   0:00 /usr/bin/VBox
+rachit      1750  0.0  0.0 163480  2740 ?        Sl   16:36   0:00 /usr/bin/VBox
+rachit      1758  0.0  0.0  31244   360 ?        S    16:36   0:00 /usr/bin/VBox
+rachit      1759  0.3  0.0 163996  2740 ?        Sl   16:36   0:05 /usr/bin/VBox
+rachit      1763  0.0  0.0  31244   364 ?        S    16:36   0:00 /usr/bin/VBox
+rachit      1764  0.0  0.0 165760  3748 ?        Sl   16:36   0:00 /usr/bin/VBox
+rachit      1774  0.0  0.0   6040   460 ?        Ss   16:36   0:00 /usr/bin/ssh-
+rachit      1797  0.0  0.0 383580  9508 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1803  0.0  0.0   7248  4376 ?        S    16:36   0:00 /usr/bin/dbus
+rachit      1816  0.0  0.0  98696  4336 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1823  0.0  0.1 421592 17604 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1836  1.4  3.0 3441552 330212 ?      Ssl  16:36   0:22 /usr/bin/gnom
+rachit      1859  0.0  0.0 323372 10436 ?        Sl   16:36   0:00 ibus-daemon -
+rachit      1867  0.0  0.0 175184  9092 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1868  0.2  0.2 282808 29688 ?        Sl   16:36   0:03 /usr/libexec/
+rachit      1870  0.0  0.2 204596 25848 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1872  0.0  0.0 248984  9384 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1884  0.0  0.0 162912  6616 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1888  0.0  0.0 244228  4636 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1893  0.0  0.1 581584 21016 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1899  0.0  0.2 399056 26024 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1908  0.0  0.2 716364 30140 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1916  0.0  0.0 156100  5492 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1921  0.0  0.2 682072 29408 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1937  0.0  0.2 2533648 26532 ?       Sl   16:36   0:00 /usr/bin/gjs 
+rachit      1945  0.0  0.0 326176 10800 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      1954  0.0  0.0 322540  9124 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1957  0.0  0.2 500948 26476 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1960  0.0  0.1 382992 17320 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1966  0.0  0.0 322776  9288 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1967  0.0  0.2 352444 25844 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1972  0.0  0.2 907852 28148 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1975  0.0  0.2 353088 26924 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1977  0.0  0.1 256736 11304 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1978  0.0  0.0 465732  6040 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1980  0.0  0.0 244140  6020 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1985  0.0  0.1 477588 12640 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1986  0.0  0.0 326700 10656 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1990  0.0  0.1 330404 11212 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1997  0.0  0.0 396504  9388 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      1999  0.0  0.2 352080 25852 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      2003  0.0  0.0 326864 10636 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      2006  0.0  0.2 353084 26424 ?        Ssl  16:36   0:00 /usr/libexec/
+rachit      2028  0.0  0.5 645604 59104 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      2031  0.0  0.0 231800  5888 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      2055  0.0  0.1 350824 15184 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      2098  0.0  0.0 175240  9124 ?        Sl   16:36   0:00 /usr/libexec/
+rachit      2181  0.0  0.0 170812  6372 ?        Ssl  16:37   0:00 /usr/libexec/
+rachit      2184  0.0  0.3 542868 40172 ?        Sl   16:37   0:00 update-notifi
+root        2258  0.0  0.0      0     0 ?        I    16:50   0:00 [kworker/0:1-
+root        2262  0.0  0.0      0     0 ?        I    16:57   0:00 [kworker/u2:0
+rachit      2315  1.3  0.4 821432 49492 ?        Ssl  17:01   0:00 /usr/libexec/
+rachit      2323  0.0  0.0  19248  5000 pts/0    Ss   17:01   0:00 bash
+root        2331  0.0  0.0      0     0 ?        I    17:01   0:00 [kworker/0:2-
+root        2332  0.0  0.0      0     0 ?        I    17:01   0:00 [kworker/0:3-
+root        2338  0.0  0.0  20548  4656 pts/0    S+   17:02   0:00 sudo ps -aux
+root        2339  0.0  0.0  20320  3452 pts/0    R+   17:02   0:00 ps -aux
+
+
+2. Find the users currently logged in:
+rachit@rrm:~$ w
+ 17:32:04 up 6 min,  2 users,  load average: 2.42, 2.06, 1.09
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+rachit   :0       :0               17:27   ?xdm?   1:50   0.04s /usr/lib/gdm3/g
+akash    :1       :1               17:30   ?xdm?   1:50   0.02s /usr/lib/gdm3/g
+rachit@rrm:~$ who
+rachit   :0           2021-03-08 17:27 (:0)
+akash    :1           2021-03-08 17:30 (:1)
+rachit@rrm:~$ users
+akash rachit
+
+
+3. Find the uptime of the machine:
+rachit@rrm:~$ uptime
+ 17:37:57 up 12 min,  2 users,  load average: 2.00, 1.42, 1.03
+
+
+4. Find the ram usage:
+rachit@rrm:~$ top
+
+top - 17:44:29 up 19 min,  2 users,  load average: 0.04, 0.53, 0.77
+Tasks: 253 total,   1 running, 252 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 66.7 us, 11.1 sy,  0.0 ni, 22.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :  10713.9 total,   7936.6 free,   1428.8 used,   1348.6 buff/cache
+MiB Swap:    448.5 total,    448.5 free,      0.0 used.   8996.0 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                 
+   1596 rachit    20   0 3716800 343040 128348 S  47.1   3.1   1:04.08 gnome-shell                                                             
+   1381 rachit    20   0  557528  78688  48528 S  17.6   0.7   0:26.67 Xorg                                                                    
+   4542 rachit    20   0   20620   4008   3232 R  11.8   0.0   0:00.02 top                                                                     
+   3713 rachit    20   0  826564  51028  39296 S   5.9   0.5   0:05.75 gnome-terminal-                                                         
+      1 root      20   0  167892  11800   8524 S   0.0   0.1   0:08.56 systemd                                                                 
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd                                                                
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp                                                                  
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp                                                              
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-kblockd                                                    
+      7 root      20   0       0      0      0 I   0.0   0.0   0:01.18 kworker/0:1-events                                                      
+      8 root      20   0       0      0      0 I   0.0   0.0   0:00.46 kworker/u2:0-events_unbound                                             
+      9 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_percpu_wq                                                            
+     10 root      20   0       0      0      0 S   0.0   0.0   0:00.70 ksoftirqd/0                                                             
+     11 root      20   0       0      0      0 I   0.0   0.0   0:02.54 rcu_sched                                                               
+     12 root      rt   0       0      0      0 S   0.0   0.0   0:00.01 migration/0                                                             
+     13 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0                                                           
+     14 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0                                                                 
+     15 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kdevtmpfs                                                               
+     16 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns                                                                   
+     17 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_kthre                                                         
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_rude_                                                         
+     19 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_trace                                                         
+     20 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kauditd                                                                 
+[1]+  Stopped                 top
+rachit@rrm:~$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:           10Gi       1.4Gi       7.8Gi        19Mi       1.3Gi       8.8Gi
+Swap:         448Mi          0B       448Mi
+
+
+5. Find the disk usage:
+rachit@rrm:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            5.3G     0  5.3G   0% /dev
+tmpfs           1.1G  1.7M  1.1G   1% /run
+/dev/sda5       9.3G  6.8G  2.1G  77% /
+tmpfs           5.3G     0  5.3G   0% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           5.3G     0  5.3G   0% /sys/fs/cgroup
+/dev/loop2       52M   52M     0 100% /snap/snap-store/518
+/dev/loop4       32M   32M     0 100% /snap/snapd/11036
+/dev/loop0      219M  219M     0 100% /snap/gnome-3-34-1804/66
+/dev/loop3       56M   56M     0 100% /snap/core18/1988
+/dev/loop5       33M   33M     0 100% /snap/snapd/11107
+/dev/loop1       65M   65M     0 100% /snap/gtk-common-themes/1514
+/dev/sda1       511M  4.0K  511M   1% /boot/efi
+tmpfs           1.1G   36K  1.1G   1% /run/user/1000
+/dev/sr0         59M   59M     0 100% /media/rachit/VBox_GAs_6.1.18
+tmpfs           1.1G   24K  1.1G   1% /run/user/1002
+
+
+6. Find the inode usage:
+rachit@rrm:~$ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+udev           1363583    491 1363092    1% /dev
+tmpfs          1371384    946 1370438    1% /run
+/dev/sda5       622592 207362  415230   34% /
+tmpfs          1371384      1 1371383    1% /dev/shm
+tmpfs          1371384      6 1371378    1% /run/lock
+tmpfs          1371384     18 1371366    1% /sys/fs/cgroup
+/dev/loop2       15847  15847       0  100% /snap/snap-store/518
+/dev/loop4         470    470       0  100% /snap/snapd/11036
+/dev/loop0       18508  18508       0  100% /snap/gnome-3-34-1804/66
+/dev/loop3       10817  10817       0  100% /snap/core18/1988
+/dev/loop5         474    474       0  100% /snap/snapd/11107
+/dev/loop1       63978  63978       0  100% /snap/gtk-common-themes/1514
+/dev/sda1            0      0       0     - /boot/efi
+tmpfs          1371384     92 1371292    1% /run/user/1000
+/dev/sr0             0      0       0     - /media/rachit/VBox_GAs_6.1.18
+tmpfs          1371384     79 1371305    1% /run/user/1002
+
+
+7. Find the ulimit of a user:
+rachit@rrm:~$ ulimit -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 42611
+max locked memory       (kbytes, -l) 65536
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 42611
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+
+8. Find the ulimit of a process:
+rachit@rrm:~$ cat /proc/5610/limits \\5610 is the id given.
+Limit                     Soft Limit           Hard Limit           Units     
+Max cpu time              unlimited            unlimited            seconds   
+Max file size             unlimited            unlimited            bytes     
+Max data size             unlimited            unlimited            bytes     
+Max stack size            8388608              unlimited            bytes     
+Max core file size        0                    unlimited            bytes     
+Max resident set          unlimited            unlimited            bytes     
+Max processes             42611                42611                processes 
+Max open files            4096                 1048576              files     
+Max locked memory         67108864             67108864             bytes     
+Max address space         unlimited            unlimited            bytes     
+Max file locks            unlimited            unlimited            locks     
+Max pending signals       42611                42611                signals   
+Max msgqueue size         819200               819200               bytes     
+Max nice priority         0                    0                    
+Max realtime priority     0                    0                    
+Max realtime timeout      50000                200000               us
+
+
+9. Find the file descriptors used by a process:
+rachit@rrm:~$ ls /proc/1824/fd  \\1824 is the id id given.
+0  1  2  3  4  5  6  7  8
+rachit@rrm:~$ ls -l /proc/1824/fd
+total 0
+lr-x------ 1 rachit rachit 64 Mar  8 17:27 0 -> /dev/null
+l-wx------ 1 rachit rachit 64 Mar  8 17:27 1 -> /dev/null
+l-wx------ 1 rachit rachit 64 Mar  8 17:27 2 -> /dev/null
+lrwx------ 1 rachit rachit 64 Mar  8 17:27 3 -> 'socket:[36290]'
+lrwx------ 1 rachit rachit 64 Mar  8 17:27 4 -> 'anon_inode:[eventfd]'
+lrwx------ 1 rachit rachit 64 Mar  8 17:27 5 -> 'anon_inode:[eventfd]'
+lr-x------ 1 rachit rachit 64 Mar  8 17:27 6 -> anon_inode:inotify
+lrwx------ 1 rachit rachit 64 Mar  8 17:27 7 -> 'anon_inode:[eventfd]'
+lrwx------ 1 rachit rachit 64 Mar  8 17:27 8 -> 'socket:[36318]'
+
+
+10. Find the top 5 process by memory usage;
+rachit@rrm:~$ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -6
+    PID    PPID CMD                         %MEM %CPU
+   3516    1596 /snap/snap-store/518/usr/bi  3.1  0.8
+   1596    1322 /usr/bin/gnome-shell         3.1  4.9
+   2670    2389 /usr/bin/gnome-shell         2.8  0.5
+   1381    1372 /usr/lib/xorg/Xorg vt2 -dis  0.9  2.5
+   2854    2655 /usr/libexec/evolution-data  0.5  0.0
+
+
+11. Find the top 5 process by cpu usage:
+
+rachit@rrm:~$ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -6
+    PID    PPID CMD                         %MEM %CPU
+   1596    1322 /usr/bin/gnome-shell         3.1  4.9
+   1381    1372 /usr/lib/xorg/Xorg vt2 -dis  0.9  2.5
+   3713    1322 /usr/libexec/gnome-terminal  0.4  1.0
+   3516    1596 /snap/snap-store/518/usr/bi  3.1  0.8
+   2670    2389 /usr/bin/gnome-shell         2.8  0.5
+
+
+12. Find the top 5 process by network usage: (see 14.)
+13. Find the top 5 process by disk iops usage: (see 14.)
+14. Find the network traffic and bandwidth usage of the machine:
+sudo iftop
+sudo iotop
+sudo nload
+REF: https://www.tecmint.com/linux-network-bandwidth-monitoring-tools
+
+
+15. Given a file as input, find the processes using that file:
+rachit@rrm:~$ lsof /dev/null | head -6  \\remove head -6 to get all files.
+lsof: WARNING: can't stat() fuse.gvfsd-fuse file system /run/user/1002/gvfs
+      Output information may be incomplete.
+COMMAND    PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+systemd   1322 rachit    0r   CHR    1,3      0t0    6 /dev/null
+pulseaudi 1328 rachit    0r   CHR    1,3      0t0    6 /dev/null
+tracker-m 1330 rachit    0r   CHR    1,3      0t0    6 /dev/null
+dbus-daem 1333 rachit    0u   CHR    1,3      0t0    6 /dev/null
+gvfsd     1337 rachit    0r   CHR    1,3      0t0    6 /dev/null
+
+
+16. List files opened by a process (ex: sshd, httpd):
+
+
+17. List processes listening on a specific port (ex: 22):
+rachit@rrm:~$ lsof -i :80
+COMMAND  PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+firefox 8696 rachit   50u  IPv4 124962      0t0  TCP rrm:49152->82.221.107.34.bc.googleusercontent.com:http (ESTABLISHED)
+firefox 8696 rachit   77u  IPv4 125003      0t0  TCP rrm:49154->82.221.107.34.bc.googleusercontent.com:http (ESTABLISHED)
+firefox 8696 rachit  106u  IPv4 126091      0t0  TCP rrm:52066->bom12s18-in-f3.1e100.net:http (ESTABLISHED)
+firefox 8696 rachit  108u  IPv4 126149      0t0  TCP rrm:52074->bom12s18-in-f3.1e100.net:http (ESTABLISHED)
+firefox 8696 rachit  112u  IPv4 125418      0t0  TCP rrm:59742->117.18.237.29:http (ESTABLISHED)
+
+
+18. Find the status of a service (ex: httpd):
+rachit@rrm:~$ sudo systemctl status apache2  \\status of apache2
+
+
+19. Find zombie processes on a machine:
+rachit@rrm:~$ ps aux | grep 'Z'
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+rachit      9040  0.0  0.0  17540   728 pts/1    S+   19:05   0:00 grep --color=auto Z
+rachit@rrm:~$ sudo ps aux | grep 'Z'
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+rachit      9043  0.0  0.0  17540   724 pts/1    S+   19:05   0:00 grep --color=auto Z
+
+
+20. Find the environment variables set on a machine:
+rachit@rrm:~$ env
+SHELL=/bin/bash
+SESSION_MANAGER=local/rrm:@/tmp/.ICE-unix/1583,unix/rrm:/tmp/.ICE-unix/1583
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LANGUAGE=en_IN:en
+GNOME_SHELL_SESSION_MODE=ubuntu
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+SSH_AGENT_PID=1535
+GTK_MODULES=gail:atk-bridge
+PWD=/home/rachit
+LOGNAME=rachit
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+WINDOWPATH=2
+HOME=/home/rachit
+USERNAME=rachit
+IM_CONFIG_PHASE=1
+LANG=en_IN
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6003
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/0df9c3ee_ca86_4468_9068_be2ffcab4008
+INVOCATION_ID=9e66b843ba744363bdc36c2ee061e6be
+MANAGERPID=1322
+GJS_DEBUG_OUTPUT=stderr
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=rachit
+GNOME_TERMINAL_SERVICE=:1.125
+DISPLAY=:0
+SHLVL=1
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/1000
+JOURNAL_STREAM=8:33928
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+_=/usr/bin/env
+
+
+21. Display processes started by a user:
+rachit@rrm:~$ ps -u rachit | tail -6  \\remove tail -6 to view all.
+   5252 pts/1    00:00:00 htop
+   8488 pts/1    00:00:00 nload
+   8992 pts/1    00:00:00 systemctl
+   8993 pts/1    00:00:00 pager
+   9129 pts/1    00:00:00 ps
+   9130 pts/1    00:00:00 tail
+
+
+22. Kill a process:
+rachit@rrm:~$ ps aux | tail -3
+rachit      9176  0.0  0.0  20628  4004 pts/1    T    19:17   0:00 top
+rachit      9179  0.0  0.0  20132  3356 pts/1    R+   19:17   0:00 ps aux
+rachit      9180  0.0  0.0  16756   588 pts/1    S+   19:17   0:00 tail -3
+rachit@rrm:~$ kill -9 9176
+[10]+  Killed                  top
+rachit@rrm:~$ ps aux | tail -3
+root        9082  0.0  0.0      0     0 ?        I    19:10   0:00 [kworker/u2:0-events_unbound]
+rachit      9181  0.0  0.0  20132  3356 pts/1    R+   19:17   0:00 ps aux
+rachit      9182  0.0  0.0  16756   580 pts/1    S+   19:17   0:00 tail -3
+
+
+<pre><font color="#4E9A06"><b>rachit@rrm</b></font>:<font color="#3465A4"><b>~</b></font>
+
+
+23. List open ports:
+rachit@rrm:~$ ss -tulpn
+Netid         State          Recv-Q         Send-Q                 Local Address:Port                  Peer Address:Port        Process        
+udp           UNCONN         0              0                      127.0.0.53%lo:53                         0.0.0.0:*                          
+udp           UNCONN         0              0                            0.0.0.0:631                        0.0.0.0:*                          
+udp           UNCONN         0              0                            0.0.0.0:60616                      0.0.0.0:*                          
+udp           UNCONN         0              0                            0.0.0.0:5353                       0.0.0.0:*                          
+udp           UNCONN         0              0                               [::]:33659                         [::]:*                          
+udp           UNCONN         0              0                               [::]:5353                          [::]:*                          
+tcp           LISTEN         0              4096                   127.0.0.53%lo:53                         0.0.0.0:*                          
+tcp           LISTEN         0              5                          127.0.0.1:631                        0.0.0.0:*                          
+tcp           LISTEN         0              5                              [::1]:631                           [::]:* </pre>
+
+
+24. Find the permissions set for a file:
+rachit@rrm:~$ ls -l ans.txt
+-rw-rw-r-- 1 rachit rachit 17319 Mar  8 19:20 ans.txt
