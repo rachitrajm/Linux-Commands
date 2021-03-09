@@ -38,7 +38,7 @@ find zombie processes on a machine
 
 find the environment variables set on a machine
 
-Display processes started by a user
+display processes started by a user
 
 kill a process
 
